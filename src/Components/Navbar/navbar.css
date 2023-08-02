@@ -80,13 +80,13 @@
     font-weight: 600;
     color: var(--whiteColor);
   }
-  .header .navBar .navLists .closeNavbar {
+  .header .navBar .closeNavbar {
     position: absolute;
     top: 1rem;
     right: 1.5rem;
     color: var(--PrimaryColor);
   }
-  .header .navBar .navLists .closeNavbar:hover {
+  .header .navBar .closeNavbar:hover {
     color: var(--SecondaryColor);
   }
   .header .activeNavbar {
