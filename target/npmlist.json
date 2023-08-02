@@ -1,1 +1,18 @@
-{"version":"0.1.0","name":"flightbooking-frontend","dependencies":{"@testing-library/jest-dom":{"version":"5.17.0"},"@testing-library/react":{"version":"13.4.0"},"@testing-library/user-event":{"version":"13.5.0"},"@types/jest":{"version":"27.5.2"},"@types/node":{"version":"16.18.39"},"@types/react-dom":{"version":"18.2.7"},"@types/react":{"version":"18.2.18"},"react-dom":{"version":"18.2.0"},"react-scripts":{"version":"5.0.1"},"react":{"version":"18.2.0"},"typescript":{"version":"4.9.5"},"web-vitals":{"version":"2.1.4"}}}
+{
+  "version": "0.1.0",
+  "name": "flightbooking-frontend",
+  "dependencies": {
+    "@testing-library/jest-dom": { "version": "5.17.0" },
+    "@testing-library/react": { "version": "13.4.0" },
+    "@testing-library/user-event": { "version": "13.5.0" },
+    "@types/jest": { "version": "27.5.2" },
+    "@types/node": { "version": "16.18.39" },
+    "@types/react-dom": { "version": "18.2.7" },
+    "@types/react": { "version": "18.2.18" },
+    "react-dom": { "version": "18.2.0" },
+    "react-scripts": { "version": "5.0.1" },
+    "react": { "version": "18.2.0" },
+    "typescript": { "version": "4.9.5" },
+    "web-vitals": { "version": "2.1.4" }
+  }
+}
