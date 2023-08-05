@@ -3,9 +3,11 @@ import './home.css';
 import Waterfall from '../../Assets/collos.MOV';
 import { GrLocation } from 'react-icons/gr';
 import { HiFilter } from 'react-icons/hi';
+import { BsCalendarDateFill } from 'react-icons/bs';
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css';
 import { DateRange } from 'react-date-range';
+import format from 'date-fns/format';
 import { useState } from 'react';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import { InputAdornment } from '@mui/material';
@@ -18,6 +20,7 @@ export const Home = () => {
   }
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
+  const [open, setOpen] = useState(false);
   const selectionRange = {
     startDate: startDate,
     endDate: endDate,
@@ -38,9 +41,10 @@ export const Home = () => {
         <div className="cardDiv grid">
           <div className="destinationInput">
             <label htmlFor="city">Search your destination:</label>
-            <div className="input flex">
+            <div className="input flex" style={{ margin: '10px 0px' }}>
               <OutlinedInput
                 label="From? "
+                placeholder="From? "
                 type="text"
                 id="outlined-adornment-password"
                 endAdornment={
@@ -53,6 +57,7 @@ export const Home = () => {
             <div className="input flex">
               <OutlinedInput
                 label="To? "
+                placeholder="To? "
                 id="outlined-adornment-password"
                 endAdornment={
                   <InputAdornment position="end">
@@ -62,16 +67,30 @@ export const Home = () => {
               />
             </div>
           </div>
-          <div className="dateInput">
+          <div className="calendarWrap">
             <label htmlFor="date">Search your date:</label>
-            <div className="input flex flex-column">
-              <DateRange
-                minDate={new Date()}
-                ranges={[selectionRange]}
-                rangeColors={['#0073a8']}
-                onChange={handleSelect}
-                className="calendarInput"
+            <div className="calendarWrap">
+              <OutlinedInput
+                value={format(selectionRange.startDate, 'MM/dd/yy') + '-' + format(selectionRange.endDate, 'MM/dd/yy')}
+                readOnly
+                onClick={() => setOpen(!open)}
+                className="inputBox"
+                endAdornment={
+                  <InputAdornment position="end">
+                    <BsCalendarDateFill className="icon" />
+                  </InputAdornment>
+                }
               />
+              <div>
+                {open && (
+                  <DateRange
+                    minDate={new Date()}
+                    ranges={[selectionRange]}
+                    rangeColors={['#3d91ff']}
+                    onChange={handleSelect}
+                  />
+                )}
+              </div>
             </div>
           </div>
           <div className="searchOptions flex">
