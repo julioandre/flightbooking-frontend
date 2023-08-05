@@ -5,7 +5,7 @@ import { GrLocation } from 'react-icons/gr';
 import { HiFilter } from 'react-icons/hi';
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css';
-import { DateRangePicker } from 'react-date-range';
+import { DateRange } from 'react-date-range';
 import { useState } from 'react';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import { InputAdornment } from '@mui/material';
@@ -65,11 +65,12 @@ export const Home = () => {
           <div className="dateInput">
             <label htmlFor="date">Search your date:</label>
             <div className="input flex flex-column">
-              <DateRangePicker
+              <DateRange
                 minDate={new Date()}
                 ranges={[selectionRange]}
                 rangeColors={['#0073a8']}
                 onChange={handleSelect}
+                className="calendarInput"
               />
             </div>
           </div>

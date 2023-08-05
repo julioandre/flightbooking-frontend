@@ -1,13 +1,9 @@
 :root {
   --PrimaryColor: hsl(199, 100%, 33%);
   --SecondaryColor: hsl(187, 85%, 43%);
-  --gradientColor: linear-gradient(
-    to right,
-    hsl(187, 85%, 43%),
-    hsl(199, 100%, 33%)
-  );
+  --gradientColor: linear-gradient(to right, hsl(187, 85%, 43%), hsl(199, 100%, 33%));
   --whiteColor: hsl(0, 0%, 100%);
-  --blackColor: hsl(201, 33%, 16%);
+  --blackColor: #1b2d36;
   --textColor: hsl(240, 4%, 36%);
   --whiteColorDeam: hsl(0, 0%, 93%);
   --greyText: rgb(190, 190, 190);
@@ -41,7 +37,7 @@
   top: 0;
   bottom: 0;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .home .homeContent {
   width: 100%;
@@ -81,4 +77,8 @@
   padding-bottom: 10px;
   font-size: 13px;
   font-weight: 500;
-}/*# sourceMappingURL=home.css.map */
+}
+.home .homeContent .calendarInput {
+  color: beige;
+}
+/*# sourceMappingURL=home.css.map */
