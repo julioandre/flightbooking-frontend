@@ -10,7 +10,8 @@ import { DateRange } from 'react-date-range';
 import format from 'date-fns/format';
 import { useState } from 'react';
 import OutlinedInput from '@mui/material/OutlinedInput';
-import { InputAdornment } from '@mui/material';
+import { Box, FormHelperText, Grid, InputAdornment, Paper, Typography } from '@mui/material';
+import { relative } from 'path';
 
 export const Home = () => {
   interface selectionRange {
@@ -38,13 +39,14 @@ export const Home = () => {
       <div className="homeContent container">
         <span className="smallText">Our Packages</span>
         <h1 className="homeTitle">Search your Holiday</h1>
-        <div className="cardDiv grid">
-          <div className="destinationInput">
-            <label htmlFor="city">Search your destination:</label>
-            <div className="input flex" style={{ margin: '10px 0px' }}>
+        <Paper elevation={2} sx={{ position: 'relative', padding: 2, background: 'white' }} className="cardDiv">
+          <Grid container spacing={3} className="destinationInput">
+            <Grid item xs={12} sm={6} md={4}>
               <OutlinedInput
+                sx={{ borderRadius: 5, margin: 1, padding: 1 }}
                 label="From? "
                 placeholder="From? "
+                fullWidth
                 type="text"
                 id="outlined-adornment-password"
                 endAdornment={
@@ -52,11 +54,17 @@ export const Home = () => {
                     <GrLocation className="icon" />
                   </InputAdornment>
                 }
-              />
-            </div>
-            <div className="input flex">
+                aria-describedby="outlined-destination-helper-text"
+                inputProps={{
+                  'aria-label': 'Search Your Destination',
+                }}
+              />{' '}
+            </Grid>
+            <Grid item xs={12} sm={6} md={4}>
               <OutlinedInput
+                sx={{ borderRadius: 5, margin: 1, padding: 1 }}
                 label="To? "
+                fullWidth
                 placeholder="To? "
                 id="outlined-adornment-password"
                 endAdornment={
@@ -65,14 +73,13 @@ export const Home = () => {
                   </InputAdornment>
                 }
               />
-            </div>
-          </div>
-          <div className="calendarWrap">
-            <label htmlFor="date">Search your date:</label>
-            <div className="calendarWrap">
+            </Grid>
+            <Grid item xs={12} sm={6} md={4}>
               <OutlinedInput
+                sx={{ borderRadius: 5, padding: 1, margin: 1 }}
                 value={format(selectionRange.startDate, 'MM/dd/yy') + '-' + format(selectionRange.endDate, 'MM/dd/yy')}
                 readOnly
+                fullWidth
                 onClick={() => setOpen(!open)}
                 className="inputBox"
                 endAdornment={
@@ -81,7 +88,7 @@ export const Home = () => {
                   </InputAdornment>
                 }
               />
-              <div>
+              <div style={{ padding: 2, margin: 2 }}>
                 {open && (
                   <DateRange
                     minDate={new Date()}
@@ -91,12 +98,13 @@ export const Home = () => {
                   />
                 )}
               </div>
-            </div>
-          </div>
-          <div className="searchOptions flex">
+            </Grid>
+          </Grid>
+
+          <div style={{ padding: 2, margin: 1 }} className="searchOptions flex">
             <HiFilter />
           </div>
-        </div>
+        </Paper>
       </div>
     </section>
   );
