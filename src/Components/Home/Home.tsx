@@ -94,12 +94,14 @@ export const Home = () => {
                   value={destinations.arrival}
                   placeholder="To? "
                   name="arrival"
+                  onChange={handleDestinations}
+                  type="text"
                   endAdornment={
                     <InputAdornment position="end">
                       <FlightLandIcon className="icon" color="primary" />
                     </InputAdornment>
                   }
-                />
+                />{' '}
               </Grid>
               <Grid item xs={12} sm={6} md={3}>
                 <OutlinedInput
