@@ -1,3 +1,4 @@
+import { Main } from './../Components/Main/Main';
 import { createTheme } from '@mui/material';
 
 // Augumenting Palette to include blueshade color
@@ -21,8 +22,12 @@ const customTheme = createTheme({
     error: {
       main: '#F86C7D',
     },
+    warning: {
+      main: '#F09846',
+    },
     success: {
       main: '#34AC64',
+      light: '#B2F4D9',
     },
     blueshade: {
       main: '#2D78E9',
