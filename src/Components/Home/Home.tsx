@@ -1,8 +1,6 @@
-import React from 'react';
 import './home.css';
 import Waterfall from '../../Assets/collos.MOV';
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
-import { GrLocation } from 'react-icons/gr';
 import { HiFilter } from 'react-icons/hi';
 import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
 import { BsCalendarDateFill } from 'react-icons/bs';
@@ -13,9 +11,7 @@ import format from 'date-fns/format';
 import FlightLandIcon from '@mui/icons-material/FlightLand';
 import { useState } from 'react';
 import OutlinedInput from '@mui/material/OutlinedInput';
-import { Box, Button, FormHelperText, Grid, IconButton, InputAdornment, Paper, Typography } from '@mui/material';
-import { relative } from 'path';
-import { TbSpacingHorizontal } from 'react-icons/tb';
+import { Button, Grid, InputAdornment, Paper } from '@mui/material';
 
 export const Home = () => {
   interface selectedDestination {

@@ -1,4 +1,3 @@
-import { Main } from './../Components/Main/Main';
 import { createTheme } from '@mui/material';
 
 // Augumenting Palette to include blueshade color
