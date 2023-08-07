@@ -2,10 +2,15 @@ import './home.css';
 import Waterfall from '../../Assets/collos.MOV';
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
 import { HiFilter } from 'react-icons/hi';
+import { DateRangePicker } from '@mui/x-date-pickers-pro/DateRangePicker';
 import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
 import 'react-date-range/dist/styles.css'; // main style file
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { SingleInputDateRangeField } from '@mui/x-date-pickers-pro/SingleInputDateRangeField';
+
 import 'react-date-range/dist/theme/default.css';
 import { DateRange } from 'react-date-range';
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import format from 'date-fns/format';
 import FlightLandIcon from '@mui/icons-material/FlightLand';
 import { useState } from 'react';
@@ -14,6 +19,7 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import { Button, Grid, InputAdornment, Paper } from '@mui/material';
 import { ThemeProvider } from '@emotion/react';
 import customTheme from '../../Config/customTheme';
+import { LocalizationProvider } from '@mui/x-date-pickers';
 
 export const Home = () => {
   interface selectedDestination {
@@ -102,7 +108,12 @@ export const Home = () => {
                 />
               </Grid>
               <Grid item xs={12} sm={6} md={3}>
-                <OutlinedInput
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DemoContainer components={['SingleInputDateRangeField']}>
+                    <DateRangePicker slots={{ field: SingleInputDateRangeField }} />
+                  </DemoContainer>
+                </LocalizationProvider>
+                {/* <OutlinedInput
                   sx={{ borderRadius: 5, padding: 1, margin: 1 }}
                   value={
                     format(selectionRange.startDate, 'MM/dd/yy') + '-' + format(selectionRange.endDate, 'MM/dd/yy')
@@ -127,7 +138,7 @@ export const Home = () => {
                       onChange={handleSelect}
                     />
                   )}
-                </div>
+                </div> */}
               </Grid>
             </Grid>
 
