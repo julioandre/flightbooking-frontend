@@ -7,27 +7,41 @@ import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
 import 'react-date-range/dist/styles.css'; // main style file
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { SingleInputDateRangeField } from '@mui/x-date-pickers-pro/SingleInputDateRangeField';
-
+import axios from 'axios';
 import 'react-date-range/dist/theme/default.css';
 import { DateRange } from 'react-date-range';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import format from 'date-fns/format';
 import FlightLandIcon from '@mui/icons-material/FlightLand';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import { Button, Grid, InputAdornment, Paper } from '@mui/material';
 import { ThemeProvider } from '@emotion/react';
 import customTheme from '../../Config/customTheme';
 import { LocalizationProvider } from '@mui/x-date-pickers';
+import { IAirportResponse } from '../../schemas/airportResponse';
 
 export const Home = () => {
   interface selectedDestination {
     departure: string;
     arrival: string;
   }
+  useEffect(() => {
+    const getAiports = async () => {
+      fetch(`https://airlabs.co/api/v9/airports?api_key=${process.env.REACT_APP_AIRPORT}`)
+        .then((response) => response.json())
+        .then((data) => {
+          const [...items] = data.response;
+          setAirportList(items);
+          console.log(airportList);
+        });
+    };
+    getAiports().catch(console.error);
+  }, []);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
+  const [airportList, setAirportList] = useState<IAirportResponse[]>([]);
   const [destinations, setDestinations] = useState<selectedDestination>({ departure: '', arrival: '' });
   const [open, setOpen] = useState(false);
   const selectionRange = {
