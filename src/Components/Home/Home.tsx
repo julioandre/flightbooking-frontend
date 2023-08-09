@@ -14,34 +14,34 @@ import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import format from 'date-fns/format';
 import FlightLandIcon from '@mui/icons-material/FlightLand';
 import { useEffect, useState } from 'react';
+import Autocomplete from '@mui/material/Autocomplete';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import OutlinedInput from '@mui/material/OutlinedInput';
-import { Button, Grid, InputAdornment, Paper } from '@mui/material';
+import { Box, Button, Grid, InputAdornment, Paper, TextField } from '@mui/material';
 import { ThemeProvider } from '@emotion/react';
 import customTheme from '../../Config/customTheme';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { IAirportResponse } from '../../schemas/airportResponse';
+import _ from 'lodash';
 
 export const Home = () => {
   interface selectedDestination {
     departure: string;
     arrival: string;
   }
-  useEffect(() => {
-    const getAiports = async () => {
-      fetch(`https://airlabs.co/api/v9/airports?api_key=${process.env.REACT_APP_AIRPORT}`)
-        .then((response) => response.json())
-        .then((data) => {
-          const [...items] = data.response;
-          setAirportList(items);
-          console.log(airportList);
-        });
-    };
-    getAiports().catch(console.error);
-  }, []);
+
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-  const [airportList, setAirportList] = useState<IAirportResponse[]>([]);
+  const [airportList, setAirportList] = useState<IAirportResponse[]>([
+    {
+      name: "Chicago O'Hare International Airport",
+      iata_code: 'ORD',
+      icao_code: 'KORD',
+      lat: 41.978367,
+      lng: -87.904712,
+      country_code: 'US',
+    },
+  ]);
   const [destinations, setDestinations] = useState<selectedDestination>({ departure: '', arrival: '' });
   const [open, setOpen] = useState(false);
   const selectionRange = {
@@ -56,6 +56,7 @@ export const Home = () => {
     });
   };
   const handleDestinationsSwap = () => {
+    console.log(airportList);
     const temp_dest: selectedDestination = {
       departure: destinations.arrival,
       arrival: destinations.departure,
@@ -68,6 +69,17 @@ export const Home = () => {
     setStartDate(ranges.selection.startDate);
     setEndDate(ranges.selection.endDate);
   };
+  useEffect(() => {
+    const getAiports = async () => {
+      fetch(`https://airlabs.co/api/v9/airports?api_key=${process.env.REACT_APP_AIRPORT}`)
+        .then((response) => response.json())
+        .then((data) => {
+          setAirportList(data.response);
+          console.log(airportList);
+        });
+    };
+    getAiports().catch(console.error);
+  }, []);
 
   return (
     <ThemeProvider theme={customTheme}>
@@ -80,19 +92,57 @@ export const Home = () => {
           <Paper elevation={2} sx={{ position: 'relative', padding: 2, background: 'white' }} className="cardDiv">
             <Grid container className="destinationInput">
               <Grid item xs={12} sm={5} md={3} spacing={1}>
-                <OutlinedInput
+                <Autocomplete
+                  id="country-select-demo"
+                  sx={{ width: 300 }}
+                  options={_.uniqWith(airportList, (arrVal, othVal) => arrVal.iata_code === othVal.iata_code)}
+                  autoHighlight
+                  getOptionLabel={(option) => option.name}
+                  renderOption={(props, option) => (
+                    <Box
+                      component="li"
+                      sx={{ '& > img': { mr: 2, flexShrink: 0 } }}
+                      {...props}
+                      key={option.icao_code + option.name}
+                    >
+                      {option.name} ({option.iata_code}) +{option.icao_code}
+                    </Box>
+                  )}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      label="Choose a country"
+                      inputProps={{
+                        ...params.inputProps,
+                        autoComplete: 'new-password', // disable autocomplete and autofill
+                      }}
+                    />
+                  )}
+                />
+                <Autocomplete
+                  // eslint-disable-next-line prettier/prettier
+                  id='departure-select-demo'
                   sx={{ borderRadius: 5, py: 1, my: 1 }}
                   placeholder="From? "
+                  autoHighlight
+                  options={airportList}
                   fullWidth
-                  onChange={handleDestinations}
-                  value={destinations.departure}
-                  type="text"
-                  name="departure"
-                  endAdornment={
-                    <InputAdornment position="end">
-                      <FlightTakeoffIcon className="icon" color="primary" />
-                    </InputAdornment>
-                  }
+                  // renderOption={(props, option) => {
+                  //   return (
+                  //     <li {...props} key={option.iata_code}>
+                  //       `${option.iata_code} ${option.name}`
+                  //     </li>
+                  //   );
+                  // }}
+                  renderInput={(params) => (
+                    <OutlinedInput
+                      endAdornment={
+                        <InputAdornment position="end">
+                          <FlightTakeoffIcon className="icon" color="primary" />
+                        </InputAdornment>
+                      }
+                    ></OutlinedInput>
+                  )}
                 />{' '}
               </Grid>
               {
