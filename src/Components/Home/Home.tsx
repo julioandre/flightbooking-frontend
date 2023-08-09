@@ -94,7 +94,7 @@ export const Home = () => {
               <Grid item xs={12} sm={5} md={3} spacing={1}>
                 <Autocomplete
                   id="country-select-demo"
-                  sx={{ width: 300 }}
+                  sx={{ borderRadius: 5, my: 1, py: 1 }}
                   options={_.uniqWith(airportList, (arrVal, othVal) => arrVal.iata_code === othVal.iata_code)}
                   autoHighlight
                   getOptionLabel={(option) => option.name}
@@ -111,9 +111,16 @@ export const Home = () => {
                   renderInput={(params) => (
                     <TextField
                       {...params}
-                      label="Choose a country"
-                      inputProps={{
-                        ...params.inputProps,
+                      fullWidth
+                      placeholder="To? "
+                      name="arrival"
+                      InputProps={{
+                        ...params.InputProps,
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <FlightTakeoffIcon className="icon" color="primary" />
+                          </InputAdornment>
+                        ),
                         autoComplete: 'new-password', // disable autocomplete and autofill
                       }}
                     />
