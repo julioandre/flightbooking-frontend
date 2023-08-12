@@ -84,7 +84,7 @@ export const Home = () => {
           <span className="smallText">Our Packages</span>
           <h1 className="homeTitle">Search your Holiday</h1>
           <Paper elevation={2} sx={{ position: 'relative', padding: 2, background: 'white' }} className="cardDiv">
-            <Grid container alignContent={'center'} className="destinationInput">
+            <Grid container justifyContent="center" alignContent={'center'} className="destinationInput">
               <Grid item xs={12} sm={5} md={3} spacing={1}>
                 <Autocomplete
                   id="country-select-demo"
@@ -95,7 +95,7 @@ export const Home = () => {
                   renderOption={(props, option) => (
                     <Box
                       component="li"
-                      sx={{ '& > img': { mr: 2, flexShrink: 0 } }}
+                      sx={{ '& > img': { flexShrink: 0 } }}
                       {...props}
                       key={option.icao_code + option.name}
                     >
@@ -126,13 +126,8 @@ export const Home = () => {
               </Grid>
               {
                 <Grid item container xs={1} alignItems="center" justifyContent="center" direction={'column'}>
-                  <Button
-                    sx={{ alignItems: 'center' }}
-                    variant="contained"
-                    color="primary"
-                    onClick={handleDestinationsSwap}
-                  >
-                    <SwapHorizIcon fontSize="large" />
+                  <Button sx={{ alignItems: 'center' }} variant="customButton" onClick={handleDestinationsSwap}>
+                    <SwapHorizIcon fontSize="large" sx={{ color: 'white' }} />
                   </Button>
                 </Grid>
               }
