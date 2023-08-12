@@ -84,7 +84,7 @@ export const Home = () => {
           <span className="smallText">Our Packages</span>
           <h1 className="homeTitle">Search your Holiday</h1>
           <Paper elevation={2} sx={{ position: 'relative', padding: 2, background: 'white' }} className="cardDiv">
-            <Grid container alignContent={'center'} className="destinationInput">
+            <Grid container className="destinationInput">
               <Grid item xs={12} sm={5} md={3} spacing={1}>
                 <Autocomplete
                   id="country-select-demo"
@@ -125,9 +125,9 @@ export const Home = () => {
                 />
               </Grid>
               {
-                <Grid item container xs={1} alignItems="center" justifyContent="center" direction={'column'}>
+                <Grid item xs={0.5} alignItems="center" justifyContent="center">
                   <Button
-                    sx={{ alignItems: 'center' }}
+                    sx={{ my: 4, mx: 2, alignItems: 'center' }}
                     variant="contained"
                     color="primary"
                     onClick={handleDestinationsSwap}
