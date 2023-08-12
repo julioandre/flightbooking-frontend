@@ -1,5 +1,11 @@
-import { createTheme } from '@mui/material';
+import { createTheme } from '@mui/material/styles';
 
+// Doe so we can use the cutomButton name as a variant
+declare module '@mui/material/Button' {
+  interface ButtonPropsVariantOverrides {
+    customButton: true;
+  }
+}
 // Augumenting Palette to include blueshade color
 declare module '@mui/material/styles' {
   interface Palette {
@@ -11,6 +17,18 @@ declare module '@mui/material/styles' {
   }
 }
 const customTheme = createTheme({
+  components: {
+    MuiButton: {
+      variants: [
+        {
+          props: { variant: 'customButton' },
+          style: {
+            background: 'linear-gradient(to top,#2E40E2,#2D78E9,#2CD5E0)',
+          },
+        },
+      ],
+    },
+  },
   palette: {
     primary: {
       main: '#3F75E7',
