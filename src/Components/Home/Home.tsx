@@ -94,7 +94,7 @@ export const Home = () => {
               <Grid item xs={12} sm={5} md={3} spacing={1}>
                 <Autocomplete
                   id="country-select-demo"
-                  sx={{ borderRadius: 5, my: 1, py: 1 }}
+                  sx={{ '& fieldset': { borderRadius: 5 }, my: 1, py: 1 }}
                   options={_.uniqWith(airportList, (arrVal, othVal) => arrVal.iata_code === othVal.iata_code)}
                   autoHighlight
                   getOptionLabel={(option) => option.name}
@@ -112,10 +112,13 @@ export const Home = () => {
                     <TextField
                       {...params}
                       fullWidth
-                      placeholder="To? "
-                      name="arrival"
+                      placeholder="From "
+                      name="departure"
                       InputProps={{
                         ...params.InputProps,
+                        style: {
+                          height: '72px',
+                        },
                         startAdornment: (
                           <InputAdornment position="start">
                             <FlightTakeoffIcon className="icon" color="primary" />
@@ -126,36 +129,11 @@ export const Home = () => {
                     />
                   )}
                 />
-                <Autocomplete
-                  // eslint-disable-next-line prettier/prettier
-                  id='departure-select-demo'
-                  sx={{ borderRadius: 5, py: 1, my: 1 }}
-                  placeholder="From? "
-                  autoHighlight
-                  options={airportList}
-                  fullWidth
-                  // renderOption={(props, option) => {
-                  //   return (
-                  //     <li {...props} key={option.iata_code}>
-                  //       `${option.iata_code} ${option.name}`
-                  //     </li>
-                  //   );
-                  // }}
-                  renderInput={(params) => (
-                    <OutlinedInput
-                      endAdornment={
-                        <InputAdornment position="end">
-                          <FlightTakeoffIcon className="icon" color="primary" />
-                        </InputAdornment>
-                      }
-                    ></OutlinedInput>
-                  )}
-                />{' '}
               </Grid>
               {
-                <Grid item xs={1} alignItems="center" justifyContent="center">
+                <Grid item xs={0.5} alignItems="center" justifyContent="center">
                   <Button
-                    sx={{ marginY: 2, marginX: 2 }}
+                    sx={{ my: 4, mx: 2, alignItems: 'center' }}
                     variant="contained"
                     color="primary"
                     onClick={handleDestinationsSwap}
@@ -165,20 +143,45 @@ export const Home = () => {
                 </Grid>
               }
               <Grid item xs={12} sm={5} md={3} spacing={1}>
-                <OutlinedInput
-                  sx={{ borderRadius: 5, my: 1, py: 1 }}
-                  fullWidth
-                  value={destinations.arrival}
-                  placeholder="To? "
-                  name="arrival"
-                  endAdornment={
-                    <InputAdornment position="end">
-                      <FlightLandIcon className="icon" color="primary" />
-                    </InputAdornment>
-                  }
+                <Autocomplete
+                  id="country-select-demo"
+                  sx={{ '& fieldset': { borderRadius: 5 }, my: 1, py: 1 }}
+                  options={_.uniqWith(airportList, (arrVal, othVal) => arrVal.iata_code === othVal.iata_code)}
+                  autoHighlight
+                  getOptionLabel={(option) => option.name}
+                  renderOption={(props, option) => (
+                    <Box
+                      component="li"
+                      sx={{ '& > img': { flexShrink: 0 } }}
+                      {...props}
+                      key={option.icao_code + option.name}
+                    >
+                      {option.name} ({option.iata_code}) +{option.icao_code}
+                    </Box>
+                  )}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      fullWidth
+                      placeholder="To? "
+                      name="arrival"
+                      InputProps={{
+                        ...params.InputProps,
+                        style: {
+                          height: '72px',
+                        },
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <FlightLandIcon className="icon" color="primary" />
+                          </InputAdornment>
+                        ),
+                        autoComplete: 'new-password', // disable autocomplete and autofill
+                      }}
+                    />
+                  )}
                 />
               </Grid>
-              <Grid item xs={12} sm={6} md={3}>
+              <Grid item xs={12} sm={6} md={3} spacing={1}>
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                   <DemoContainer components={['SingleInputDateRangeField']}>
                     <DateRangePicker slots={{ field: SingleInputDateRangeField }} />
