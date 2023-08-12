@@ -137,10 +137,6 @@ export const Home = () => {
                 </Grid>
               }
               <Grid item xs={12} sm={5} md={3} spacing={1}>
-<<<<<<< HEAD
-
-=======
->>>>>>> parent of ebf1641 (Revert "1 adding airport dropdown")
                 <Autocomplete
                   id="country-select-demo"
                   sx={{ '& fieldset': { borderRadius: 5 }, my: 1, py: 1 }}
