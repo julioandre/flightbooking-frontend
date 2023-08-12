@@ -137,7 +137,6 @@ export const Home = () => {
                 </Grid>
               }
               <Grid item xs={12} sm={5} md={3} spacing={1}>
-
                 <Autocomplete
                   id="country-select-demo"
                   sx={{ '& fieldset': { borderRadius: 5 }, my: 1, py: 1 }}
