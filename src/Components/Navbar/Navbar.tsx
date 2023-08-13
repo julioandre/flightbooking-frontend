@@ -7,7 +7,6 @@ import {
   BottomNavigationAction,
   Box,
   Button,
-  Container,
   IconButton,
   Toolbar,
   Tooltip,
@@ -54,29 +53,27 @@ export const Navbar = () => {
           </BottomNavigation>{' '}
         </>
       ) : (
-        <>
-          <AppBar position={'static'} sx={{ background: theme.palette.secondary.light }}>
-            <Container maxWidth={'xl'}>
-              <Toolbar disableGutters>
-                <TravelExplore color={'primary'} sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-                <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                  {pages.map((pages) => (
-                    <Button key={pages} onClick={closeNav} sx={{ my: 2, color: 'primary', display: 'block' }}>
-                      {pages}
-                    </Button>
-                  ))}
-                </Box>
-                <Box sx={{ flexGrow: 0 }}>
-                  <Tooltip title={'Go to Profile'}>
-                    <IconButton sx={{ p: 0 }}>
-                      <Avatar alt="Remy Sharp" src="" />
-                    </IconButton>
-                  </Tooltip>
-                </Box>
-              </Toolbar>
-            </Container>
+        <Box sx={{ display: 'flex' }}>
+          <AppBar component={'nav'} position={'static'} sx={{ background: theme.palette.secondary.light }}>
+            <Toolbar>
+              <TravelExplore color={'primary'} sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+              <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                {pages.map((pages) => (
+                  <Button key={pages} onClick={closeNav} sx={{ my: 2, color: 'primary', display: 'block' }}>
+                    {pages}
+                  </Button>
+                ))}
+              </Box>
+              <Box sx={{ flexGrow: 0 }}>
+                <Tooltip title={'Go to Profile'}>
+                  <IconButton sx={{ p: 0 }}>
+                    <Avatar alt="Remy Sharp" src="" />
+                  </IconButton>
+                </Tooltip>
+              </Box>
+            </Toolbar>
           </AppBar>
-        </>
+        </Box>
       )}
     </ThemeProvider>
     // <section className="navBarSection">
