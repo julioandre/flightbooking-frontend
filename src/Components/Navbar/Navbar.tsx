@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './navbar.css';
-import { AppBar, Box, Button, Container, Toolbar } from '@mui/material';
+import { AppBar, Avatar, Box, Button, Container, IconButton, Toolbar, Tooltip } from '@mui/material';
 import { TravelExplore } from '@mui/icons-material';
 
 export const Navbar = () => {
@@ -26,6 +26,13 @@ export const Navbar = () => {
                 {pages}
               </Button>
             ))}
+          </Box>
+          <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title={'Go to Profile'}>
+              <IconButton sx={{ p: 0 }}>
+                <Avatar alt="Remy Sharp" src="" />
+              </IconButton>
+            </Tooltip>
           </Box>
         </Toolbar>
       </Container>
