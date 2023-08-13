@@ -1,9 +1,28 @@
 import { createTheme } from '@mui/material/styles';
 
-export const customStyles = createTheme({
+declare module '@mui/material/Button' {
+  interface ButtonPropsVariantOverrides {
+    customAppBar: true;
+  }
+}
+// const theme = createMuiTheme();
+// export const customStyles = makeStyles((theme)=>{
+//     root:{
+//
+//     }
+// })
+
+export const custStyles = createTheme({
   // components: {
   //   MuiAppBar: {
-  //     variants: [{}],
+  //     variants: [
+  //       {
+  //         props: { variant: 'customAppBar' },
+  //         style: {
+  //           background: 'secondary.light',
+  //         },
+  //       },
+  //     ],
   //   },
   // },
 });

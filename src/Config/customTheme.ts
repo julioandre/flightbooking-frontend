@@ -37,6 +37,7 @@ const customTheme = createTheme({
     },
     secondary: {
       main: '#D8E3FF',
+      light: 'hsl(0, 0%, 100%)',
       contrastText: '#3F75E7',
     },
     whites: {
