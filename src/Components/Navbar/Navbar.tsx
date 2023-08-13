@@ -21,7 +21,7 @@ import ExploreIcon from '@mui/icons-material/Explore';
 
 export const Navbar = () => {
   const isMobile = useMediaQuery('(max-width:650px)');
-  const isTablet = useMediaQuery('(max-width:1200px,min-width:750px)');
+  const isTablet = useMediaQuery('(max-width:1200px),(min-width:750p)x)');
   const theme = customTheme;
   const pages = ['Flights', 'My Tickets', 'Explore'];
   const [value, setValue] = React.useState(0);
@@ -37,7 +37,7 @@ export const Navbar = () => {
   };
   return (
     <ThemeProvider theme={theme}>
-      {isMobile || isTablet ? (
+      {isTablet ? (
         <>
           <BottomNavigation
             showLabels
