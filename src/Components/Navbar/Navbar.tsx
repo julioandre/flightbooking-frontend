@@ -16,13 +16,13 @@ export const Navbar = () => {
     setAnchorElNav(null);
   };
   return (
-    <AppBar position={'static'}>
+    <AppBar position={'static'} color={'secondary'}>
       <Container maxWidth={'xl'}>
         <Toolbar disableGutters>
           <TravelExplore sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((pages) => (
-              <Button key={pages} onClick={closeNav} sx={{ my: 2, color: 'white', display: 'block' }}>
+              <Button key={pages} onClick={closeNav} sx={{ my: 2, color: 'primary', display: 'block' }}>
                 {pages}
               </Button>
             ))}
