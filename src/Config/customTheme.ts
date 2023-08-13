@@ -10,10 +10,12 @@ declare module '@mui/material/Button' {
 declare module '@mui/material/styles' {
   interface Palette {
     blueshade: Palette['primary'];
+    whites: Palette['primary'];
   }
 
   interface PaletteOptions {
     blueshade?: PaletteOptions['primary'];
+    whites?: PaletteOptions['primary'];
   }
 }
 const customTheme = createTheme({
@@ -35,6 +37,13 @@ const customTheme = createTheme({
     },
     secondary: {
       main: '#D8E3FF',
+      light: 'hsl(0, 0%, 100%)',
+      contrastText: '#3F75E7',
+    },
+    whites: {
+      main: '#FFFFFF',
+      light: '#F8FBFC',
+      dark: '#A0A0A0',
     },
     error: {
       main: '#F86C7D',

@@ -12,7 +12,7 @@ import { useEffect, useState } from 'react';
 import Autocomplete from '@mui/material/Autocomplete';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import OutlinedInput from '@mui/material/OutlinedInput';
-import { Box, Button, Grid, InputAdornment, Paper, TextField } from '@mui/material';
+import { Box, Button, Grid, InputAdornment, Paper, TextField, useMediaQuery } from '@mui/material';
 import { ThemeProvider } from '@emotion/react';
 import customTheme from '../../Config/customTheme';
 import { IAirportResponse } from '../../schemas/airportResponse';
@@ -24,6 +24,8 @@ export const Home = () => {
     arrival: string;
   }
 
+  const isMobile = useMediaQuery('(max-width:650px)');
+  const isTablet = useMediaQuery('(max-width:1200px,min-width:750px)');
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [airportList, setAirportList] = useState<IAirportResponse[]>([
@@ -125,8 +127,12 @@ export const Home = () => {
                 />
               </Grid>
               {
-                <Grid item container xs={1} alignItems="center" justifyContent="center" direction={'column'}>
-                  <Button sx={{ alignItems: 'center' }} variant="customButton" onClick={handleDestinationsSwap}>
+                <Grid item container xs={1.5} alignItems="center" justifyContent="center" direction={'column'}>
+                  <Button
+                    sx={{ alignItems: 'center', maxWidth: '100%' }}
+                    variant="customButton"
+                    onClick={handleDestinationsSwap}
+                  >
                     <SwapHorizIcon fontSize="large" sx={{ color: 'white' }} />
                   </Button>
                 </Grid>
