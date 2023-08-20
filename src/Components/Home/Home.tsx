@@ -1,9 +1,11 @@
 import './home.css';
 import Waterfall from '../../Assets/collos.MOV';
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
+import dayjs from 'dayjs';
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css';
 import FlightLandIcon from '@mui/icons-material/FlightLand';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useEffect, useState } from 'react';
 import Autocomplete from '@mui/material/Autocomplete';
 import { Box, CircularProgress, Grid, InputAdornment, Paper, TextField, useMediaQuery } from '@mui/material';
@@ -12,8 +14,9 @@ import customTheme from '../../Config/customTheme';
 import { IAirportResponse } from '../../schemas/airportResponse';
 import { useForm } from 'react-hook-form';
 import _ from 'lodash';
-import { DateRangePicker, LocalizationProvider } from '@mui/x-date-pickers-pro';
+import { LocalizationProvider } from '@mui/x-date-pickers-pro';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import PassengerSelect from '../PassengerSelect/PassengerSelect';
 
 export const Home = () => {
   interface selectedDestination {
@@ -224,13 +227,34 @@ export const Home = () => {
                     )}
                   />
                 </Grid>
-                <Grid item container xs={12} sm={5} md={3} spacing={1} justifyContent="center" alignItems="center">
+                <Grid container item xs={12} sm={5} md={3} spacing={1}>
                   <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <DateRangePicker
-                      slotProps={{ textField: { size: 'medium' } }}
-                      sx={{ borderRadius: 5, height: '72px' }}
-                    />
+                    <Grid item xs={12} sm={6} spacing={1}>
+                      {' '}
+                      <DatePicker
+                        defaultValue={dayjs('2022-04-17')}
+                        sx={{
+                          '& .MuiInputBase-root': { borderRadius: 5, height: '73px' },
+                          py: 1,
+                          mx: 1,
+                        }}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6} spacing={1}>
+                      {' '}
+                      <DatePicker
+                        defaultValue={dayjs('2022-04-17')}
+                        sx={{
+                          '& .MuiInputBase-root': { borderRadius: 5, height: '73px' },
+                          py: 1,
+                          mx: 1,
+                        }}
+                      />
+                    </Grid>
                   </LocalizationProvider>
+                </Grid>
+                <Grid item xs={12} sm={6} spacing={1}>
+                  <PassengerSelect />
                 </Grid>
               </Grid>
             </form>
