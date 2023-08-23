@@ -102,7 +102,7 @@ export const Home = () => {
         <div className="overlay"></div>
         <video src={Waterfall} muted autoPlay loop></video>
 
-        <Box className="homeContent container">
+        <Box className="homeContent container" alignContent={'center'} justifyContent="center">
           <span className="smallText">Our Packages</span>
           <h1 className="homeTitle">Search your Holiday</h1>
           <Paper elevation={2} sx={{ position: 'relative', padding: 2, background: 'white' }} className="cardDiv">
@@ -153,7 +153,7 @@ export const Home = () => {
                           ),
                           endAdornment: (
                             <>
-                              {loading ? (
+                              {loading && open ? (
                                 <InputAdornment position="end">
                                   <CircularProgress color="inherit" size={20} />
                                 </InputAdornment>
@@ -213,7 +213,7 @@ export const Home = () => {
                           ),
                           endAdornment: (
                             <>
-                              {loading ? (
+                              {loading && open2 ? (
                                 <InputAdornment position="end">
                                   <CircularProgress color="inherit" size={20} />
                                 </InputAdornment>
@@ -227,34 +227,41 @@ export const Home = () => {
                     )}
                   />
                 </Grid>
-                <Grid container item xs={12} sm={5} md={3} spacing={1}>
+                <Grid item container xs={12} sm={5} md={3} spacing={1} justifyContent="center" alignContent={'center'}>
                   <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <Grid item xs={12} sm={6} spacing={1}>
                       {' '}
                       <DatePicker
-                        defaultValue={dayjs('2022-04-17')}
+                        defaultValue={dayjs()}
+                        minDate={dayjs()}
+                        disablePast
+                        slotProps={{ textField: { fullWidth: true } }}
                         sx={{
                           '& .MuiInputBase-root': { borderRadius: 5, height: '73px' },
-                          py: 1,
-                          mx: 1,
+                          pt: 1,
+                          px: 1,
                         }}
                       />
                     </Grid>
-                    <Grid item xs={12} sm={6} spacing={1}>
+                    <Grid item xs={12} sm={6} md={6} spacing={1}>
                       {' '}
                       <DatePicker
                         defaultValue={dayjs('2022-04-17')}
+                        slotProps={{ textField: { fullWidth: true } }}
                         sx={{
                           '& .MuiInputBase-root': { borderRadius: 5, height: '73px' },
-                          py: 1,
-                          mx: 1,
+                          px: 1,
+                          pt: 1,
+                          pb: 1,
                         }}
                       />
                     </Grid>
                   </LocalizationProvider>
                 </Grid>
-                <Grid item xs={12} sm={6} spacing={1}>
-                  <PassengerSelect />
+                <Grid item xs={12} md={2} spacing={1}>
+                  <Box sx={{ mx: 1, pt: 1 }}>
+                    <PassengerSelect />
+                  </Box>
                 </Grid>
               </Grid>
             </form>

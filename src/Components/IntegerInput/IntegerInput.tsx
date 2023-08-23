@@ -10,6 +10,7 @@ export const CustomNumberInput = React.forwardRef(function CustomNumberInput(
 ) {
   return (
     <NumberInput
+      min={0}
       slots={{
         root: StyledInputRoot,
         input: StyledInput,
