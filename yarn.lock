@@ -1742,7 +1742,21 @@
   resolved "https://registry.npmjs.org/@leichtgewicht/ip-codec/-/ip-codec-2.0.4.tgz"
   integrity sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==
 
-"@mui/base@^5.0.0-alpha.87", "@mui/base@5.0.0-beta.9":
+"@mui/base@^5.0.0-alpha.87", "@mui/base@^5.0.0-beta.11":
+  version "5.0.0-beta.11"
+  resolved "https://registry.npmjs.org/@mui/base/-/base-5.0.0-beta.11.tgz"
+  integrity sha512-FdKZGPd8qmC3ZNke7CNhzcEgToc02M6WYZc9hcBsNQ17bgAd3s9F//1bDDYgMVBYxDM71V0sv/hBHlOY4I1ZVA==
+  dependencies:
+    "@babel/runtime" "^7.22.6"
+    "@emotion/is-prop-valid" "^1.2.1"
+    "@mui/types" "^7.2.4"
+    "@mui/utils" "^5.14.5"
+    "@popperjs/core" "^2.11.8"
+    clsx "^2.0.0"
+    prop-types "^15.8.1"
+    react-is "^18.2.0"
+
+"@mui/base@5.0.0-beta.9":
   version "5.0.0-beta.9"
   resolved "https://registry.npmjs.org/@mui/base/-/base-5.0.0-beta.9.tgz"
   integrity sha512-gm6gnPnc/lS5Z3neH0iuOrK7IbS02+oh6KsMtXYLhI6bJpHs+PNWFsBmISx7x4FSPVJZvZkb8Bw6pEXpIMFt7Q==
@@ -1846,10 +1860,10 @@
   resolved "https://registry.npmjs.org/@mui/types/-/types-7.2.4.tgz"
   integrity sha512-LBcwa8rN84bKF+f5sDyku42w1NTxaPgPyYKODsh01U1fVstTClbUoSA96oyRBnSNyEiAVjKm6Gwx9vjR+xyqHA==
 
-"@mui/utils@^5.13.7", "@mui/utils@^5.14.1", "@mui/utils@^5.14.3":
-  version "5.14.3"
-  resolved "https://registry.npmjs.org/@mui/utils/-/utils-5.14.3.tgz"
-  integrity sha512-gZ6Etw+ppO43GYc1HFZSLjwd4DoZoa+RrYTD25wQLfzcSoPjVoC/zZqA2Lkq0zjgwGBQOSxKZI6jfp9uXR+kgw==
+"@mui/utils@^5.13.7", "@mui/utils@^5.14.1", "@mui/utils@^5.14.3", "@mui/utils@^5.14.5":
+  version "5.14.5"
+  resolved "https://registry.npmjs.org/@mui/utils/-/utils-5.14.5.tgz"
+  integrity sha512-6Hzw63VR9C5xYv+CbjndoRLU6Gntal8rJ5W+GUzkyHrGWIyYPWZPa6AevnyGioySNETATe1H9oXS8f/7qgIHJA==
   dependencies:
     "@babel/runtime" "^7.22.6"
     "@types/prop-types" "^15.7.5"
@@ -8348,6 +8362,11 @@ react-error-overlay@^6.0.11:
   resolved "https://registry.npmjs.org/react-error-overlay/-/react-error-overlay-6.0.11.tgz"
   integrity sha512-/6UZ2qgEyH2aqzYZgQPxEnz33NJ2gNsnHA2o5+o4wW9bLM/JYQitNP9xPhsXwC08hMMovfGe/8retsdDsczPRg==
 
+react-hook-form@^7.45.4:
+  version "7.45.4"
+  resolved "https://registry.npmjs.org/react-hook-form/-/react-hook-form-7.45.4.tgz"
+  integrity sha512-HGDV1JOOBPZj10LB3+OZgfDBTn+IeEsNOKiq/cxbQAIbKaiJUe/KV8DBUzsx0Gx/7IG/orWqRRm736JwOfUSWQ==
+
 react-icons@^4.10.1:
   version "4.10.1"
   resolved "https://registry.npmjs.org/react-icons/-/react-icons-4.10.1.tgz"
@@ -8450,7 +8469,7 @@ react-transition-group@^4.4.5:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
-react@*, "react@^0.14 || ^15.0.0-rc || >=15.0", "react@^17.0.0 || ^18.0.0", react@^18.0.0, react@^18.2.0, "react@>= 16", "react@>= 16.8.0", react@>=16.6.0, react@>=16.8.0, "react@0.14 || 15 - 18":
+react@*, "react@^0.14 || ^15.0.0-rc || >=15.0", "react@^16.8.0 || ^17 || ^18", "react@^17.0.0 || ^18.0.0", react@^18.0.0, react@^18.2.0, "react@>= 16", "react@>= 16.8.0", react@>=16.6.0, react@>=16.8.0, "react@0.14 || 15 - 18":
   version "18.2.0"
   resolved "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
