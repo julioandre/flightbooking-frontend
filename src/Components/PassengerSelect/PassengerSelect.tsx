@@ -55,7 +55,7 @@ export const PassengerSelect = () => {
         }}
         sx={{
           height: '73px',
-          px: 1,
+
           borderRadius: 5,
         }}
         onOpen={(e) => {

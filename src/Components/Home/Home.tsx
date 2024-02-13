@@ -8,7 +8,17 @@ import FlightLandIcon from '@mui/icons-material/FlightLand';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useEffect, useState } from 'react';
 import Autocomplete from '@mui/material/Autocomplete';
-import { Box, CircularProgress, Grid, InputAdornment, Paper, TextField, useMediaQuery } from '@mui/material';
+import {
+  Box,
+  CircularProgress,
+  FormControl,
+  Grid,
+  InputAdornment,
+  MenuItem,
+  Paper,
+  TextField,
+  useMediaQuery,
+} from '@mui/material';
 import { ThemeProvider } from '@emotion/react';
 import customTheme from '../../Config/customTheme';
 import { IAirportResponse } from '../../schemas/airportResponse';
@@ -33,6 +43,7 @@ export const Home = () => {
   }
 
   const isMobile = useMediaQuery('(max-width:650px)');
+  const [travelType, setTravelType] = useState('Return');
   const isTablet = useMediaQuery('(max-width:1200px),(min-width:750p)x)');
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
@@ -68,6 +79,9 @@ export const Home = () => {
     setStartDate(ranges.selection.startDate);
     setEndDate(ranges.selection.endDate);
   };
+  const handleTravelSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTravelType(event.target.value);
+  };
   const handleFormSubmit = async (inputs: Inputs) => {
     const formData = new FormData();
   };
@@ -102,12 +116,30 @@ export const Home = () => {
         <div className="overlay"></div>
         <video src={Waterfall} muted autoPlay loop></video>
 
-        <Box className="homeContent container" alignContent={'center'} justifyContent="center">
+        <Box className="homeContent container" alignContent={'center'} justifyContent="center" display="flex">
           <span className="smallText">Our Packages</span>
           <h1 className="homeTitle">Search your Holiday</h1>
           <Paper elevation={2} sx={{ position: 'relative', padding: 2, background: 'white' }} className="cardDiv">
             <form>
-              <Grid container justifyContent="center" alignContent={'center'} className="destinationInput">
+              <Grid container>
+                <Grid item xs={12} sm={3} spacing={2}>
+                  <FormControl fullWidth variant="standard" sx={{ mx: 1.5, maxWidth: '300px' }}>
+                    <TextField
+                      id="demo-simple-select-standard"
+                      value={travelType}
+                      defaultValue={'Return'}
+                      select
+                      onChange={handleTravelSelect}
+                      variant="standard"
+                    >
+                      <MenuItem value={10}>Return</MenuItem>
+                      <MenuItem value={20}>One-Way</MenuItem>
+                    </TextField>
+                  </FormControl>
+                </Grid>
+                <Grid></Grid>
+              </Grid>
+              <Grid container className="destinationInput">
                 <Grid item xs={12} sm={5} md={3} spacing={1}>
                   <Autocomplete
                     id="country-select-demo"
@@ -237,7 +269,10 @@ export const Home = () => {
                         disablePast
                         slotProps={{ textField: { fullWidth: true } }}
                         sx={{
-                          '& .MuiInputBase-root': { borderRadius: 5, height: '73px' },
+                          '& .MuiInputBase-root': {
+                            borderRadius: 5,
+                            height: '73px',
+                          },
                           pt: 1,
                           px: 1,
                         }}
@@ -249,7 +284,12 @@ export const Home = () => {
                         defaultValue={dayjs('2022-04-17')}
                         slotProps={{ textField: { fullWidth: true } }}
                         sx={{
-                          '& .MuiInputBase-root': { borderRadius: 5, height: '73px' },
+                          '& .MuiInputBase-root': {
+                            borderRadius: 5,
+                            height: '73px',
+                          },
+                          color: 'primary',
+                          svg: 'blue',
                           px: 1,
                           pt: 1,
                           pb: 1,
@@ -258,8 +298,8 @@ export const Home = () => {
                     </Grid>
                   </LocalizationProvider>
                 </Grid>
-                <Grid item xs={12} md={2} spacing={1}>
-                  <Box sx={{ mx: 1, pt: 1 }}>
+                <Grid item xs={12} md={3} spacing={1}>
+                  <Box sx={{ pt: 1, px: 1 }}>
                     <PassengerSelect />
                   </Box>
                 </Grid>
